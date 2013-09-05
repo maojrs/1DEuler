@@ -20,7 +20,7 @@ c
 c
       ! GAUGE for pressure (choose point to see pressure as a function of time)
       ! Choose x value to obtain pressure as a function of time
-      xcell = -2.0
+      xcell = 2.0
       i = floor((xcell - xlower)/dx + 0.5)
 
       ! Calculate pressure at point xcell

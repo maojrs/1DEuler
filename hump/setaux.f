@@ -17,11 +17,11 @@ c
       ! Aux arrays establish values for the three free parameters in polystyrene EOS
       ! Polystyrene EOS based on Van der Waals approximation in Spender and Gilmore paper
       
-      pwidth = 1.3 !0.1 ! 0.05 !0.1 !0.3 ! 0.7 !1.3
+      pwidth = 0.0 !0.1 ! 0.05 !0.1 !0.3 ! 0.7 !1.3
       do i=1-mbc,mx + mbc
 !         indexi = i + mbc
         xcell = xlower + (i-0.5d0)*dx
-        if (abs(xcell) .le. pwidth) then
+        if (abs(xcell) < pwidth) then
           aux(1,i) = gammaplas
           aux(2,i) = pinfplas
           aux(3,i) = omeplas

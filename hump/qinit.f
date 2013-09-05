@@ -76,10 +76,15 @@ c
          else
           q(1,i) = rhow
           q(2,i) = 0.0
-          ! Make sure jump in pressure is zero again
-          q(3,i) = -gammaplas*pinfplas + gammawat*pinfwat
-          q(3,i) = q(3,i)+Eplas0*(gammaplas - 1.d0)/(1.d0 - omewat*rhow)
-          q(3,i) = q(3,i)*(1.d0 - omeplas*rhop)/(gammawat - 1.d0)
+!           ! Make sure jump in pressure is zero again
+!           q(3,i) = -gammaplas*pinfplas + gammawat*pinfwat
+!           q(3,i) = q(3,i)+Eplas0*(gammaplas - 1.d0)/(1.d0 - omewat*rhow)
+!           q(3,i) = q(3,i)*(1.d0 - omeplas*rhop)/(gammawat - 1.d0)
+          
+          ! Make sure jump in pressure is zero again (from air to water interface)
+          q(3,i) = -gammagas*pinfgas + gammawat*pinfwat
+          q(3,i) = q(3,i)+Egas0*(gammagas - 1.d0)/(1.d0 - omewat*rhow)
+          q(3,i) = q(3,i)*(1.d0 - omegas*rhog)/(gammawat - 1.d0)
          end if
          
   150    continue
