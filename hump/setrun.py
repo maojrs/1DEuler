@@ -69,7 +69,7 @@ def setrun(claw_pkg='classic'):
     clawdata.upper[0] = 1.600000e+01          # xupper
     
     # Number of grid cells:
-    clawdata.num_cells[0] = 2000      # mx
+    clawdata.num_cells[0] = 1700 #1000      # mx
     
 
     # ---------------

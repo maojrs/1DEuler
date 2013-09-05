@@ -71,19 +71,19 @@ def setplot(plotdata):
       #plot(-2.0, 180000, 'vk', markersize=10) 
       #plot(0.0, 180000, 'vk', markersize=10) 
       #plot(2.0, 180000, 'vk', markersize=10)
-      text(2.0,190000,'Water',fontweight='bold',fontsize=20)
-      text(-0.8,190000,'PS',fontweight='bold',fontsize=20)
-      text(-8.0,190000,'Air',fontweight='bold',fontsize=20)
-      annotate('Gauges: \n1', xy=(-8.0, 170000), xytext=(-8, 180000),
+      text(2.0,285000,'Water',fontweight='bold',fontsize=20)
+      text(-0.8,285000,'PS',fontweight='bold',fontsize=20)
+      text(-8.0,285000,'Air',fontweight='bold',fontsize=20)
+      annotate('Gauges: \n1', xy=(-8.0, 250000), xytext=(-8, 270000),
       arrowprops=dict(facecolor='black', shrink=0.05),
       )
-      annotate('2', xy=(-2.0, 170000), xytext=(-2.0, 180000),
+      annotate('2', xy=(-2.0, 250000), xytext=(-2.0, 270000),
       arrowprops=dict(facecolor='black', shrink=0.05),
       )
-      annotate('3', xy=(0.0, 170000), xytext=(0, 180000),
+      annotate('3', xy=(0.0, 250000), xytext=(0, 270000),
             arrowprops=dict(facecolor='black', shrink=0.05),
             )
-      annotate('4', xy=(2.0, 170000), xytext=(2, 180000),
+      annotate('4', xy=(2.0, 250000), xytext=(2, 270000),
             arrowprops=dict(facecolor='black', shrink=0.05),
             )
 
@@ -148,9 +148,9 @@ def setplot(plotdata):
 
     # Set up for axes in this figure:
     plotaxes = plotfigure.new_plotaxes()
-    plotaxes.xlimits = [-8.5,16] #'auto'
+    plotaxes.xlimits = [-8.5,16]#[-8.5,16] #'auto'
     plotaxes.ylimits = 'auto'
-    plotaxes.ylimits = [90000,200000] #'auto'
+    plotaxes.ylimits = [90000,300000] #'auto'
     #plotaxes.ylimits = [101305,101385] #'auto'
     plotaxes.title = 'Pressure'
     
@@ -168,7 +168,6 @@ def setplot(plotdata):
         ene = q[2,:]           # energy
         P = gamma1*(ene - 0.5*mom*mom/rho)/(1.0 - omega*rho)
         P = P - gamma*pinf 
-        print gamma
         return P
 
     plotitem.plot_var = Pressure  # defined above
@@ -198,14 +197,15 @@ def setplot(plotdata):
     PressureG = zeros(len(data))
     #Assign the data to the correponsding arrays
     for i in range(len(data)):
-	time[i] = float(data[i][0])
-	PressureG[i] = float(data[i][1])
-	
+      time[i] = float(data[i][0])
+      PressureG[i] = float(data[i][1])
+      
+    print max(PressureG)
     plt.plot(time,PressureG)
     plt.title('Pressure at Gauge 2 (x=-2.0)')
     plt.xlabel('Time in seconds')
     plt.ylabel('Pressure in Pa (N/m^2)')
-    plt.ylim(80000,170000)
+    plt.ylim(80000,300000)
     plt.xlim(0.0,0.053)
     plt.savefig('./_plots/gauge/Pressure.png')
     

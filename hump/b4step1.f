@@ -7,7 +7,6 @@ c     # called from claw1 before each call to step1.
 c     # use to set time-dependent aux arrays or perform other tasks
 c     # which must be done every time step.
 c
-c     # dummy routine 
 c
 c     
       implicit double precision (a-h,o-z)
@@ -35,7 +34,8 @@ c
       P = gamma1*(ene - 0.5*mom*mom/rho)/(1.0 - omega*rho)
       P = P - gamma*pinf 
      
-!       write (22,*) t, P
+      ! Write Gauge data to file
+      write (22,*) t, P
       
       ! Save solution on aux array
 !       j = t/dt

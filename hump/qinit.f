@@ -38,16 +38,23 @@ c
       p0 = 101325.0 !
       p = p0
       c0 = sqrt(gammagas*p0/rhog) 
+      len_amp = 1.0 !2.0! Amplification factor for length
+      amp_amp = 1.0 !8.3 ! Amplification factor for amplitude to get right sockwave before transwell
       Egas0 = p0/(gammagas - 1.d0)  
       do 150 i=1,mx
          xcell = xlower + (i-0.5d0)*dx
 
          ! Look for correct value for pressure in data file
-         ddx = dist(101) - dist(100)
+         ddx = (dist(101) - dist(100))/len_amp
          do j=1,500
-          dist2 = (dist(j) - 16.0) 
+          dist2 = (dist(j)/len_amp - 16.0) 
           if (abs(dist2 - xcell) <  ddx/2) then
-            p(i) = 6894.75729*pressure(j) + p0
+            if (pressure(j) > 0) then
+              p(i) = amp_amp*6894.75729*pressure(j) + p0
+            else 
+              p(i) = 6894.75729*pressure(j) + p0
+            end if
+            
 !           exit
           end if
          end do
