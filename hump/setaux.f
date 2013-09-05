@@ -17,7 +17,7 @@ c
       ! Aux arrays establish values for the three free parameters in polystyrene EOS
       ! Polystyrene EOS based on Van der Waals approximation in Spender and Gilmore paper
       
-      pwidth = 0.0 !0.1 ! 0.05 !0.1 !0.3 ! 0.7 !1.3
+      pwidth = 1.3 !0.0 !0.1 ! 0.05 !0.1 !0.3 ! 0.7 !1.3
       do i=1-mbc,mx + mbc
 !         indexi = i + mbc
         xcell = xlower + (i-0.5d0)*dx
